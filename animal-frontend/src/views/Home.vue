@@ -2,16 +2,18 @@
   <div class="home">
     <!-- 轮播图 -->
     <div class="banner-section">
-      <el-carousel height="500px" :interval="4000" arrow="always">
-        <el-carousel-item v-for="banner in banners" :key="banner.id">
-          <div class="banner-item" @click="handleBannerClick(banner)">
-            <img :src="banner.imageUrl" :alt="banner.title" />
-            <div class="banner-content">
-              <h2>{{ banner.title }}</h2>
+      <div class="banner-wrapper">
+        <el-carousel height="500px" :interval="4000" arrow="always">
+          <el-carousel-item v-for="banner in banners" :key="banner.id">
+            <div class="banner-item" @click="handleBannerClick(banner)">
+              <img :src="banner.imageUrl" :alt="banner.title" />
+              <div class="banner-content">
+                <h2>{{ banner.title }}</h2>
+              </div>
             </div>
-          </div>
-        </el-carousel-item>
-      </el-carousel>
+          </el-carousel-item>
+        </el-carousel>
+      </div>
     </div>
 
     <div class="container">
@@ -20,7 +22,7 @@
         <div class="section-header">
           <h2>
             <el-icon><Grid /></el-icon>
-            喵的家族
+            动物分类
           </h2>
         </div>
         <div class="category-grid">
@@ -45,7 +47,7 @@
         <div class="section-header">
           <h2>
             <el-icon><TrendCharts /></el-icon>
-            热门表情包
+            热门动物
           </h2>
           <el-button type="primary" link @click="goAnimalList()">
             查看更多
@@ -88,7 +90,7 @@
         <div class="section-header">
           <h2>
             <el-icon><Clock /></el-icon>
-           个咪档案
+            最新动物
           </h2>
           <el-button type="primary" link @click="goAnimalList()">
             查看更多
@@ -134,7 +136,6 @@ import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { getHomeData } from '@/api/home'
 import { ElMessage } from 'element-plus'
-import SvgIcon from '@/components/SvgIcon.vue'
 
 const router = useRouter()
 
@@ -177,13 +178,21 @@ onMounted(() => {
 })
 </script>
 
-<style scoped>
-.home {
+<style scoped>.home {
   padding-bottom: 40px;
 }
 
 .banner-section {
   margin-bottom: 60px;
+  padding: 20px 40px 0;
+}
+
+.banner-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
 }
 
 .banner-item {
@@ -240,6 +249,7 @@ onMounted(() => {
   gap: 10px;
   font-size: 28px;
   color: #303133;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 .category-section {
@@ -253,7 +263,10 @@ onMounted(() => {
 }
 
 .category-card {
-  background: white;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 12px;
   padding: 30px 20px;
   text-align: center;
@@ -303,17 +316,48 @@ onMounted(() => {
 }
 
 .animal-card {
-  background: white;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 4px solid rgba(255, 255, 255, 0.5);
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
 }
+
+.animal-card:nth-child(4n+1) {
+  border-color: rgba(254, 88, 175, 0.5);
+}
+
+.animal-card:nth-child(4n+2) {
+  border-color: rgba(95, 87, 255, 0.5);
+}
+
+.animal-card:nth-child(4n+3) {
+  border-color: rgba(45, 255, 65, 0.5);
+}
+
+.animal-card:nth-child(4n+4) {
+  border-color: rgba(255, 239, 87, 0.5);
+}
+
 
 .animal-image {
   position: relative;
   width: 100%;
   height: 200px;
   overflow: hidden;
+}
+
+.animal-image::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.6));
+  pointer-events: none;
 }
 
 .animal-image img {
@@ -372,6 +416,10 @@ onMounted(() => {
 }
 
 @media (max-width: 768px) {
+  .banner-section {
+    padding: 10px 15px 0;
+  }
+
   .banner-item {
     height: 300px;
   }
@@ -393,4 +441,5 @@ onMounted(() => {
   }
 }
 </style>
+
 
