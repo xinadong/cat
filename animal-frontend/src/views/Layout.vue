@@ -1,33 +1,39 @@
 <template>
-  <div class="layout">
+  <div class="layout" :style="mainBg ? {
+    backgroundImage: `url('${mainBg}')`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    backgroundAttachment: 'fixed'
+  } : {}">
     <!-- 顶部导航 -->
     <header class="header">
       <div class="container">
         <div class="logo" @click="goHome">
           <el-icon :size="32" color="#67c23a"><Pear /></el-icon>
-          <span>喵喵喵</span>
+          <span>动物科普网站</span>
         </div>
-        
+
         <nav class="nav">
           <router-link to="/" class="nav-item">
             <el-icon><HomeFilled /></el-icon>
-            首页
+            <span>首页</span>
           </router-link>
           <router-link to="/animals" class="nav-item">
             <el-icon><Grid /></el-icon>
-            猫咪档案库
-          </router-link>
-          <router-link to="/questions" class="nav-item">
-            <el-icon><ChatDotRound/></el-icon>
-            互动社区
+            <span>动物百科</span>
           </router-link>
           <router-link to="/articles" class="nav-item">
-            <el-icon><Document  /></el-icon>
-            人气喵王
+            <el-icon><Document /></el-icon>
+            <span>科普文章</span>
+          </router-link>
+          <router-link to="/questions" class="nav-item">
+            <el-icon><ChatDotRound /></el-icon>
+            <span>问答社区</span>
           </router-link>
           <router-link to="/ai-assistant" class="nav-item ai-item">
             <el-icon><MagicStick /></el-icon>
-            AI助手
+            <span>AI助手</span>
           </router-link>
         </nav>
 
@@ -53,8 +59,14 @@
             </el-dropdown>
           </template>
           <template v-else>
-            <el-button type="primary" @click="goLogin">登录</el-button>
-            <el-button @click="goRegister">注册</el-button>
+            <div class="custom-btn login-btn" @click="goLogin">
+              <el-icon><User /></el-icon>
+              <span>登录</span>
+            </div>
+            <div class="custom-btn register-btn" @click="goRegister">
+              <el-icon><EditPen /></el-icon>
+              <span>注册</span>
+            </div>
           </template>
         </div>
       </div>
@@ -108,12 +120,25 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { computed } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
 import { useUserStore } from '@/stores/user'
 
 const router = useRouter()
+const route = useRoute()
 const userStore = useUserStore()
+
+const bgMap = {
+  '/': '/images/homebg.png',
+  '/animals': '/images/animalbg.png',
+  '/articles': '/images/articlebg.png',
+  '/questions': '/images/questionbg.png',
+  '/ai-assistant': '/images/aibg.png'
+}
+
+const mainBg = computed(() => {
+  return bgMap[route.path] || ''
+})
 
 const goHome = () => {
   router.push('/')
@@ -145,8 +170,11 @@ const handleCommand = (command) => {
 }
 
 .header {
-  background: linear-gradient(135deg, #67c23a 0%, #85ce61 100%);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -174,6 +202,7 @@ const handleCommand = (command) => {
   font-weight: bold;
   color: white;
   transition: transform 0.3s;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 .logo:hover {
@@ -189,21 +218,64 @@ const handleCommand = (command) => {
   display: flex;
   align-items: center;
   gap: 5px;
-  color: white;
+  color: #303133;
   text-decoration: none;
   font-size: 16px;
   padding: 8px 16px;
   border-radius: 20px;
   transition: all 0.3s;
+  text-shadow: none;
+  position: relative;
+  background: transparent;
+  overflow: hidden;
 }
+
+.nav-item::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, #fe58af, #5f57ff, #2dff41, #ffef57);
+  z-index: 0;
+}
+
+.nav-item::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  bottom: 2px;
+  border-radius: 18px;
+  background: #ffffff;
+  z-index: 1;
+}
+
+.nav-item:hover::after {
+  background: #f4f3ff;
+}
+
 
 .nav-item:hover {
-  background: rgba(255, 255, 255, 0.2);
   transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-.nav-item.router-link-exact-active {
-  background: rgba(255, 255, 255, 0.3);
+.nav-item.router-link-exact-active::after {
+  background: #ddcfff;
+}
+
+.nav-item.router-link-exact-active::before {
+  background: linear-gradient(135deg, #ffef57, #2dff41, #5f57ff, #fe58af);
+}
+
+.nav-item :deep(.el-icon),
+.nav-item span {
+  position: relative;
+  z-index: 2;
 }
 
 .nav-item.ai-item {
@@ -213,10 +285,10 @@ const handleCommand = (command) => {
 
 @keyframes glow {
   0%, 100% {
-    box-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+    box-shadow: 0 0 5px rgb(154, 255, 255);
   }
   50% {
-    box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+    box-shadow: 0 0 15px rgb(0, 255, 255);
   }
 }
 
@@ -244,6 +316,44 @@ const handleCommand = (command) => {
 .username {
   color: white;
   font-weight: 500;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.custom-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 20px;
+  border-radius: 25px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #303133;
+}
+
+.login-btn {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.login-btn:hover {
+  background: rgba(255, 255, 255, 0.95);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+}
+
+.register-btn {
+  background: rgba(144, 107, 255,  0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.register-btn:hover {
+  background: rgba(144, 107, 255, 0.8);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(144, 107, 255, 0.3);
 }
 
 .main {
@@ -252,7 +362,9 @@ const handleCommand = (command) => {
 }
 
 .footer {
-  background: #2c3e50;
+  background: rgba(255, 255, 255, 0.50);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   color: white;
   padding: 40px 0 20px;
   margin-top: 80px;
@@ -268,12 +380,12 @@ const handleCommand = (command) => {
 .footer-section h4 {
   margin-bottom: 15px;
   font-size: 18px;
-  color: #67c23a;
+  color: #906bff;
 }
 
 .footer-section p {
   line-height: 1.8;
-  color: #bbb;
+  color: #707070;
 }
 
 .links {
@@ -283,38 +395,38 @@ const handleCommand = (command) => {
 }
 
 .links a {
-  color: #bbb;
+  color: #707070;
   text-decoration: none;
   transition: color 0.3s;
 }
 
 .links a:hover {
-  color: #67c23a;
+  color: #906bff;
 }
 
 .copyright {
   text-align: center;
   padding-top: 20px;
   border-top: 1px solid #444;
-  color: #999;
+  color: #707070;
 }
 
 .backtop-btn {
   width: 40px;
   height: 40px;
-  background: #67c23a;
+  background: rgba(144, 107, 255, 0.8);
   color: white;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 20px;
-  box-shadow: 0 2px 10px rgba(103, 194, 58, 0.3);
+  box-shadow: 0 2px 10px rgba(144, 107, 255, 0.3);
   transition: all 0.3s;
 }
 
 .backtop-btn:hover {
-  background: #85ce61;
+  background: #906bff;
   transform: scale(1.1);
 }
 
