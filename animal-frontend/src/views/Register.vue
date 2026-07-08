@@ -2,36 +2,12 @@
   <div class="register-page">
     <div class="register-container">
       <div class="register-left">
-        <div class="welcome-content">
-          <h1>
-            <el-icon :size="60" color="white"><Rabbit /></el-icon>
-          </h1>
-          <h2>加入我们</h2>
-          <p>开启你的动物科普之旅</p>
-          <div class="features">
-            <div class="feature-item">
-              <el-icon color="white"><Star /></el-icon>
-              <span>发现奇妙动物</span>
-            </div>
-            <div class="feature-item">
-              <el-icon color="white"><Star /></el-icon>
-              <span>分享知识见解</span>
-            </div>
-            <div class="feature-item">
-              <el-icon color="white"><Star /></el-icon>
-              <span>加入科普社区</span>
-            </div>
-            <div class="feature-item">
-              <el-icon color="white"><Star /></el-icon>
-              <span>收藏喜爱内容</span>
-            </div>
-          </div>
-        </div>
+
       </div>
 
       <div class="register-right">
         <div class="register-form-wrapper">
-          <h2>用户注册</h2>
+          <h2>欢迎加入<img src="/images/logo.png" alt="OurCAT" class="title-logo" />！</h2>
           <el-form ref="formRef" :model="form" :rules="rules" size="large">
             <el-form-item prop="username">
               <el-input
@@ -98,7 +74,7 @@
 
             <el-form-item>
               <el-button
-                type="primary"
+                class="rainbow-btn"
                 :loading="loading"
                 @click="handleRegister"
                 style="width: 100%"
@@ -109,7 +85,7 @@
 
             <div class="form-footer">
               <span>已有账号？</span>
-              <el-button type="primary" link @click="goLogin">
+              <el-button style="color: #906bff;" link @click="goLogin">
                 立即登录
               </el-button>
             </div>
@@ -201,7 +177,7 @@ const goLogin = () => {
 <style scoped>
 .register-page {
   min-height: 100vh;
-  background-image: url('/images/register.png');
+  background-image: url('/images/register_loginbg.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -223,45 +199,22 @@ const goLogin = () => {
 
 .register-left {
   flex: 1;
-  background: linear-gradient(135deg, #67c23a 0%, #85ce61 100%);
+  background-image: url('/images/register.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   padding: 60px 40px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
+  position: relative;
 }
 
-.welcome-content {
-  text-align: center;
-}
-
-.welcome-content h1 {
-  margin-bottom: 20px;
-}
-
-.welcome-content h2 {
-  font-size: 32px;
-  margin-bottom: 15px;
-}
-
-.welcome-content p {
-  font-size: 16px;
-  opacity: 0.9;
-  margin-bottom: 40px;
-}
-
-.features {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  text-align: left;
-}
-
-.feature-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 16px;
+.register-left::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
 }
 
 .register-right {
@@ -283,12 +236,35 @@ const goLogin = () => {
   margin-bottom: 30px;
   font-size: 28px;
   color: #303133;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.title-logo {
+  height: 80px;
+  width: auto;
+  object-fit: contain;
+  vertical-align: middle;
 }
 
 .form-footer {
   text-align: center;
   color: #909399;
   font-size: 14px;
+}
+
+.rainbow-btn {
+  background: linear-gradient(135deg, #ff0000, #ff7700, #ffdd00, #00cc00, #0099ff, #6633ff, #cc00ff) !important;
+  border: none !important;
+  color: white !important;
+  font-weight: 600;
+  transition: opacity 0.3s;
+}
+
+.rainbow-btn:hover {
+  opacity: 0.85;
 }
 
 @media (max-width: 768px) {
