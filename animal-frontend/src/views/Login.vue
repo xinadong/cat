@@ -2,32 +2,11 @@
   <div class="login-page">
     <div class="login-container">
       <div class="login-left">
-        <div class="welcome-content">
-          <h1>
-            <el-icon :size="60" color="white"><Ship /></el-icon>
-          </h1>
-          <h2>欢迎来到动物科普网站</h2>
-          <p>探索神奇的动物世界，学习丰富的科普知识</p>
-          <div class="features">
-            <div class="feature-item">
-              <el-icon color="white"><CircleCheck /></el-icon>
-              <span>海量动物资料</span>
-            </div>
-            <div class="feature-item">
-              <el-icon color="white"><CircleCheck /></el-icon>
-              <span>精彩科普文章</span>
-            </div>
-            <div class="feature-item">
-              <el-icon color="white"><CircleCheck /></el-icon>
-              <span>互动问答社区</span>
-            </div>
-          </div>
-        </div>
       </div>
 
       <div class="login-right">
         <div class="login-form-wrapper">
-          <h2>用户登录</h2>
+          <h2>欢迎回到<img src="/images/logo.png" alt="OurCAT" class="title-logo" />！</h2>
           <el-form ref="formRef" :model="form" :rules="rules" size="large">
             <el-form-item prop="username">
               <el-input
@@ -57,7 +36,7 @@
 
             <el-form-item>
               <el-button
-                type="primary"
+                class="rainbow-btn"
                 :loading="loading"
                 @click="handleLogin"
                 style="width: 100%"
@@ -68,11 +47,11 @@
 
             <div class="form-footer">
               <span>还没有账号？</span>
-              <el-button type="success" link @click="goRegister">
+              <el-button style="color: #906bff;" link @click="goRegister">
                 立即注册
               </el-button>
               <span style="margin: 0 10px">|</span>
-              <el-button type="success" link @click="goAdminLogin">
+              <el-button style="color: #906bff;" link @click="goAdminLogin">
                 管理员登录
               </el-button>
             </div>
@@ -137,7 +116,7 @@ const goAdminLogin = () => {
 <style scoped>
 .login-page {
   min-height: 100vh;
-  background-image: url('/images/login.png');
+  background-image: url('/images/register_loginbg.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -159,16 +138,29 @@ const goAdminLogin = () => {
 
 .login-left {
   flex: 1;
-  background: linear-gradient(135deg, #67c23a 0%, #85ce61 100%);
+  background-image: url('/images/login.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   padding: 60px 40px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
+  position: relative;
+}
+
+.login-left::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border-radius: 0;
 }
 
 .welcome-content {
   text-align: center;
+  position: relative;
+  z-index: 1;
 }
 
 .welcome-content h1 {
@@ -218,6 +210,29 @@ const goAdminLogin = () => {
   margin-bottom: 40px;
   font-size: 28px;
   color: #303133;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.title-logo {
+  height: 80px;
+  width: auto;
+  object-fit: contain;
+  vertical-align: middle;
+}
+
+.rainbow-btn {
+  background: linear-gradient(135deg, #ff0000, #ff7700, #ffdd00, #00cc00, #0099ff, #6633ff, #cc00ff) !important;
+  border: none !important;
+  color: white !important;
+  font-weight: 600;
+  transition: opacity 0.3s;
+}
+
+.rainbow-btn:hover {
+  opacity: 0.85;
 }
 
 .form-footer {
