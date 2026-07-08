@@ -306,25 +306,24 @@ onMounted(() => {
 <style scoped>
 .ai-assistant-page {
   min-height: calc(100vh - 350px);
-  background: #f5f7fa;
-  padding: 10px 0;
+  background: transparent;
+  padding: 60px 0;
 }
 
 .container {
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
 }
 
 .chat-container {
-  background: #e5f6ed;
+  background: #eff6e5;
   border-radius: 24px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 100px);
-  min-height: 580px;
+  height: 700px;
   background-image: url('/images/cat-paw.png');
   background-size: 150px;
   background-position: center calc(100% - 80px);
@@ -347,8 +346,8 @@ onMounted(() => {
 }
 
 .header-icon {
-  width: 32px;
-  height: 32px;
+  width: 48px;
+  height: 48px;
   object-fit: contain;
 }
 
@@ -486,6 +485,10 @@ onMounted(() => {
   color: white;
 }
 
+.message.assistant .message-content {
+  border: 2px solid #67c23a;
+}
+
 .message-text :deep(p) {
   margin: 6px 0;
 }
@@ -598,7 +601,7 @@ onMounted(() => {
   border-top: 1px solid #ebeef5;
   display: flex;
   gap: 10px;
-  align-items: flex-end;
+  align-items: center;
   background: #fafafa;
 }
 
@@ -620,6 +623,13 @@ onMounted(() => {
   margin-right: 5px;
 }
 
+/* 未输入时按钮的默认颜色（disabled 状态） */
+.cat-paw-button.is-disabled,
+.cat-paw-button.is-disabled:hover {
+  background: #c0c4cc;
+  border-color: #c0c4cc;
+  color: white;
+}
 .api-key-warning {
   padding: 0 30px 20px;
 }
