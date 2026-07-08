@@ -400,7 +400,7 @@ onMounted(() => {
 <style scoped>
 .personal-page {
   padding: 30px 0;
-  background: #f5f7fa;
+  background: transparent;
   min-height: calc(100vh - 350px);
 }
 
@@ -499,7 +499,7 @@ onMounted(() => {
 }
 
 .animal-info h3:hover {
-  color: #67c23a;
+  color: #906bff;
 }
 
 .animal-info p {
@@ -544,7 +544,7 @@ onMounted(() => {
 
 .comment-animal span {
   font-weight: 500;
-  color: #67c23a;
+  color: #906bff;
 }
 
 .comment-content {
