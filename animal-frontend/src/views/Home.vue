@@ -22,7 +22,7 @@
         <div class="section-header">
           <h2>
             <el-icon><Grid /></el-icon>
-            动物分类
+            猫咪家族
           </h2>
         </div>
         <div class="category-grid">
@@ -42,12 +42,12 @@
         </div>
       </div>
 
-      <!-- 热门动物 -->
+      <!-- 热门表情包 -->
       <div class="animal-section">
         <div class="section-header">
           <h2>
             <el-icon><TrendCharts /></el-icon>
-            热门动物
+            热门表情包
           </h2>
           <el-button type="primary" link @click="goAnimalList()">
             查看更多
@@ -85,12 +85,12 @@
         </div>
       </div>
 
-      <!-- 最新动物 -->
+      <!-- 个咪档案 -->
       <div class="animal-section">
         <div class="section-header">
           <h2>
             <el-icon><Clock /></el-icon>
-            最新动物
+            个咪档案
           </h2>
           <el-button type="primary" link @click="goAnimalList()">
             查看更多
@@ -441,5 +441,3 @@ onMounted(() => {
   }
 }
 </style>
-
-

@@ -11,7 +11,7 @@
       <div class="container">
         <div class="logo" @click="goHome">
           <el-icon :size="32" color="#67c23a"><Pear /></el-icon>
-          <span>动物科普网站</span>
+          <span>OurCAT</span>
         </div>
 
         <nav class="nav">
@@ -21,15 +21,15 @@
           </router-link>
           <router-link to="/animals" class="nav-item">
             <el-icon><Grid /></el-icon>
-            <span>动物百科</span>
-          </router-link>
-          <router-link to="/articles" class="nav-item">
-            <el-icon><Document /></el-icon>
-            <span>科普文章</span>
+            <span>猫咪档案库</span>
           </router-link>
           <router-link to="/questions" class="nav-item">
             <el-icon><ChatDotRound /></el-icon>
-            <span>问答社区</span>
+            <span>互动社区</span>
+          </router-link>
+          <router-link to="/articles" class="nav-item">
+            <el-icon><Document/></el-icon>
+            <span>人气喵王</span>
           </router-link>
           <router-link to="/ai-assistant" class="nav-item ai-item">
             <el-icon><MagicStick /></el-icon>
@@ -87,25 +87,25 @@
         <div class="footer-content">
           <div class="footer-section">
             <h4>关于我们</h4>
-            <p>动物科普网站致力于传播动物知识，保护野生动物，共建美好生态。</p>
+            <p>OurCAT致力于记录与守护每一只校园毛孩子，用温柔传递善意，共建人与猫咪和谐共处的温暖校园。</p>
           </div>
           <div class="footer-section">
             <h4>快速链接</h4>
             <div class="links">
               <router-link to="/">首页</router-link>
-              <router-link to="/animals">动物百科</router-link>
-              <router-link to="/articles">科普文章</router-link>
-              <router-link to="/questions">问答社区</router-link>
+              <router-link to="/animals">猫咪档案库</router-link>
+              <router-link to="/articles">互动社区</router-link>
+              <router-link to="/questions">人气喵王</router-link>
             </div>
           </div>
           <div class="footer-section">
             <h4>联系我们</h4>
-            <p>邮箱: contact@animal.com</p>
-            <p>电话: 400-123-4567</p>
+            <p>邮箱: 205205205@cat.com</p>
+            <p>欢迎加入猫协qq群聊！：704896722</p>
           </div>
         </div>
         <div class="copyright">
-          © 2025 动物科普网站. All Rights Reserved.
+          © 2026 DLUT OURCAT. All Rights Reserved.
         </div>
       </div>
     </footer>
@@ -457,4 +457,3 @@ const handleCommand = (command) => {
   }
 }
 </style>
-
