@@ -1,8 +1,8 @@
 /* 全局样式 */
 :root {
-  --primary-color: #67c23a; /* 绿色 - 主题色 */
-  --secondary-color: #409eff; /* 蓝色 - 辅助色 */
-  --success-color: #67c23a;
+  --primary-color: #906bff;
+  --secondary-color: #409eff;
+  --success-color: #906bff;
   --warning-color: #e6a23c;
   --danger-color: #f56c6c;
   --info-color: #909399;
@@ -24,12 +24,13 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #67c23a;
+  background: linear-gradient(to bottom, #ff0000, #ff7700, #ffdd00, #00cc00, #0099ff, #6633ff, #cc00ff);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #5daf34;
+  background: linear-gradient(to bottom, #ff0000, #ff7700, #ffdd00, #00cc00, #0099ff, #6633ff, #cc00ff);
+  opacity: 0.8;
 }
 
 /* 通用动画 */
@@ -49,7 +50,7 @@
 
 .hover-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(103, 194, 58, 0.2);
+  box-shadow: 0 8px 20px rgba(195, 195, 195, 0.2);
 }
 
 /* Element Plus 样式覆盖 */
@@ -59,7 +60,7 @@
 }
 
 .el-button--primary:hover {
-  background-color: #85ce61;
-  border-color: #85ce61;
+  background-color: #a589ff;
+  border-color: #a589ff;
 }
 
