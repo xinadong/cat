@@ -179,6 +179,7 @@ async def chat_stream(request: ChatRequest, session: Session = Depends(get_sessi
                     yield {"event": "done", "data": "[DONE]"}
                     return
 
+                full_content = ""
                 async for line in resp.content:
                     line = line.decode('utf-8').strip()
                     if line.startswith("data: "):
@@ -189,9 +190,18 @@ async def chat_stream(request: ChatRequest, session: Session = Depends(get_sessi
                             node = json.loads(data)
                             content = node.get("choices", [{}])[0].get("delta", {}).get("content", "")
                             if content:
-                                yield {"event": "content", "data": content}
+                                full_content += content
                         except Exception:
                             pass
+
+                cleaned = re.sub(r'[\s]+', ' ', full_content)
+                cleaned = re.sub(r'(?<=[\u4e00-\u9fff\uff01-\uff5e])\s+(?=[\u4e00-\u9fff\uff01-\uff5e])', '', cleaned)
+                cleaned = re.sub(r'(?<=[\u4e00-\u9fff])\s+(?=[a-zA-Z0-9])', '', cleaned)
+                cleaned = re.sub(r'(?<=[a-zA-Z0-9])\s+(?=[\u4e00-\u9fff])', '', cleaned)
+                cleaned = cleaned.strip()
+
+                if cleaned:
+                    yield {"event": "content", "data": cleaned}
                 yield {"event": "done", "data": "[DONE]"}
 
     return EventSourceResponse(event_generator())
