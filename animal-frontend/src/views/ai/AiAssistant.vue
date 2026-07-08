@@ -5,10 +5,10 @@
         <!-- 头部 -->
         <div class="chat-header">
           <div class="header-content">
-            <el-icon :size="32" color="white"><ChatDotRound /></el-icon>
+            <img src="/images/cat.png" alt="AI助手" class="header-icon" />
             <div>
-              <h2>AI 动物科普助手</h2>
-              <p>我可以回答您关于动物的各种问题</p>
+              <h2>AI 猫咪小助手</h2>
+              <p>喵！今天想了解什么~</p>
             </div>
           </div>
           <el-button 
@@ -27,18 +27,21 @@
         <div class="chat-messages" ref="messagesContainer">
           <!-- 欢迎消息 -->
           <div v-if="messages.length === 0" class="welcome-message">
-            <el-icon :size="64" color="#67c23a"><ChatDotRound /></el-icon>
-            <h3>您好！我是 AI 动物科普助手</h3>
-            <p>您可以问我关于动物的任何问题，例如：</p>
+            <div class="welcome-cat-icon">
+              <el-icon :size="48" color="#67c23a"><ChatDotRound /></el-icon>
+            </div>
+            <h3>喵～我是你的猫咪小助手</h3>
+            <p>关于校园毛孩子的一切，尽管来问我！比如：</p>
             <div class="example-questions">
-              <el-tag 
+              <div
                 v-for="example in exampleQuestions" 
                 :key="example"
-                @click="askQuestion(example)"
-                class="example-tag"
+                @click="askQuestion(example.text)"
+                class="example-card"
               >
-                {{ example }}
-              </el-tag>
+                <div class="example-icon">{{ example.icon }}</div>
+                <div class="example-text">{{ example.text }}</div>
+              </div>
             </div>
           </div>
 
@@ -50,21 +53,17 @@
           >
             <div class="message-avatar">
               <el-avatar v-if="msg.role === 'user'" :src="userStore.userInfo.avatar" :size="40" />
-              <el-icon v-else :size="40" color="#67c23a"><ChatDotRound /></el-icon>
+              <img v-else src="/images/cat.png" alt="AI助手" class="assistant-avatar" />
             </div>
             <div class="message-content">
               <div :class="['message-text', { 'streaming-text': streaming && index === messages.length - 1 && msg.role === 'assistant' }]" v-html="formatMessage(msg.content)"></div>
-              <div v-if="msg.context && msg.context.length > 0" class="message-context">
-                <el-icon><Document /></el-icon>
-                参考知识：{{ msg.context.join('、') }}
-              </div>
             </div>
           </div>
 
           <!-- 加载中 -->
           <div v-if="loading" class="message assistant">
             <div class="message-avatar">
-              <el-icon :size="40" color="#67c23a"><ChatDotRound /></el-icon>
+              <img src="/images/cat.png" alt="AI助手" class="assistant-avatar" />
             </div>
             <div class="message-content">
               <el-icon class="loading-icon"><Loading /></el-icon>
@@ -85,12 +84,12 @@
           />
           <el-button 
             type="primary" 
-            :icon="Position" 
             @click="handleSend"
             :loading="loading"
             :disabled="!inputMessage.trim()"
+            class="cat-paw-button"
           >
-            发送
+            🐾 发送
           </el-button>
         </div>
 
@@ -129,10 +128,10 @@ const hasApiKey = ref(false)
 const aiConfig = ref({})
 
 const exampleQuestions = [
-  '大熊猫吃什么？',
-  '东北虎和华南虎有什么区别？',
-  '朱鹮为什么珍贵？',
-  '如何保护野生动物？'
+  { icon: '🍖', text: '流浪猫能吃什么？' },
+  { icon: '🏥', text: '猫咪生病有哪些征兆？' },
+  { icon: '🐾', text: '校园里有哪些猫咪？' },
+  { icon: '😺', text: '猫咪为什么咕噜咕噜？' }
 ]
 
 // 获取 AI 配置
@@ -308,7 +307,7 @@ onMounted(() => {
 .ai-assistant-page {
   min-height: calc(100vh - 350px);
   background: #f5f7fa;
-  padding: 20px 0;
+  padding: 10px 0;
 }
 
 .container {
@@ -318,20 +317,24 @@ onMounted(() => {
 }
 
 .chat-container {
-  background: white;
-  border-radius: 12px;
+  background: #e5f6ed;
+  border-radius: 24px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 200px);
-  min-height: 650px;
+  height: calc(100vh - 100px);
+  min-height: 580px;
+  background-image: url('/images/cat-paw.png');
+  background-size: 150px;
+  background-position: center calc(100% - 80px);
+  background-repeat: repeat-x;
 }
 
 .chat-header {
-  background: linear-gradient(135deg, #67c23a 0%, #85ce61 100%);
+  background: linear-gradient(135deg, #8dd967 0%, #bceaa4 100%);
   color: white;
-  padding: 20px 30px;
+  padding: 12px 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -341,6 +344,12 @@ onMounted(() => {
   display: flex;
   align-items: center;
   gap: 15px;
+}
+
+.header-icon {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
 }
 
 .header-content h2 {
@@ -359,42 +368,88 @@ onMounted(() => {
 .chat-messages {
   flex: 1;
   overflow-y: auto;
-  padding: 20px 30px;
+  padding: 5px 30px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
 }
 
 .welcome-message {
   text-align: center;
-  padding: 60px 20px;
+  padding: 70px 20px 0;
   color: #606266;
+  width: 100%;
 }
 
 .welcome-message h3 {
-  margin: 20px 0 10px;
-  font-size: 24px;
+  margin: 8px 0 4px;
+  font-size: 20px;
   color: #303133;
 }
 
 .welcome-message p {
-  margin-bottom: 20px;
+  margin-bottom: 5px;
   color: #909399;
 }
 
 .example-questions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-top: 8px;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.example-tag {
+.example-card {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: #f0f9eb;
+  border-radius: 12px;
   cursor: pointer;
   transition: all 0.3s;
+  position: relative;
+  z-index: 0;
 }
 
-.example-tag:hover {
+.example-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 12px;
+  padding: 2px;
+  background: linear-gradient(135deg, #8dd967, #a855f7);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  z-index: -1;
+}
+
+.example-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(103, 194, 58, 0.3);
+  box-shadow: 0 4px 12px rgba(168, 85, 247, 0.25);
+  background: #e1f3d8;
+}
+
+.example-card:hover::before {
+  background: linear-gradient(135deg, #a855f7, #8dd967);
+}
+
+.example-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.example-text {
+  font-size: 14px;
+  color: #303133;
 }
 
 .message {
@@ -409,6 +464,12 @@ onMounted(() => {
 
 .message-avatar {
   flex-shrink: 0;
+}
+
+.assistant-avatar {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
 }
 
 .message-content {
@@ -533,7 +594,7 @@ onMounted(() => {
 }
 
 .chat-input {
-  padding: 20px 30px;
+  padding: 8px 30px 10px;
   border-top: 1px solid #ebeef5;
   display: flex;
   gap: 10px;
@@ -541,8 +602,22 @@ onMounted(() => {
   background: #fafafa;
 }
 
-.chat-input .el-input {
-  flex: 1;
+.chat-input .el-input :deep(.el-textarea__inner) {
+  border-radius: 4px;
+}
+
+.chat-input .el-button {
+  border-radius: 4px;
+  height: 40px;
+}
+
+.cat-paw-button {
+  font-size: 16px;
+}
+
+.cat-paw-button::before {
+  content: '';
+  margin-right: 5px;
 }
 
 .api-key-warning {
@@ -569,6 +644,10 @@ onMounted(() => {
   .chat-input {
     padding: 15px 20px;
   }
+
+  .example-questions {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+  }
 }
 </style>
-
