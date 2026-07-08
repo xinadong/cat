@@ -472,16 +472,16 @@ onUnmounted(() => {
   cursor: pointer;
   padding: 5px 15px 5px 5px;
   border-radius: 25px;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.70);
   transition: all 0.3s;
 }
 
 .user-info:hover {
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255);
 }
 
 .username {
-  color: white;
+  color: #303133;
   font-weight: 500;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
