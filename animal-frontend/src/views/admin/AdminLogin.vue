@@ -3,10 +3,10 @@
     <div class="login-container">
       <div class="login-header">
         <div class="logo">
-          <el-icon :size="50" color="#67c23a"><Monitor /></el-icon>
+          <img src="/images/logo.png" alt="OurCAT" class="admin-logo" />
         </div>
-        <h2 class="title-green">动物科普网站 - 管理后台</h2>
-        <p class="subtitle-green">Animal Science Management System</p>
+        <h2 class="title-green">OurCAT - 管理后台</h2>
+        <p class="subtitle-green">OurCAT Management System</p>
       </div>
 
       <el-card class="login-card" shadow="always">
@@ -39,7 +39,7 @@
 
           <el-form-item>
             <el-button
-              type="primary"
+              class="rainbow-btn"
               :loading="loading"
               @click="handleLogin"
               style="width: 100%"
@@ -49,12 +49,12 @@
           </el-form-item>
 
           <div class="form-footer">
-            <el-button type="primary" link @click="goUserLogin">
+            <el-button style="color: #906bff;" link @click="goUserLogin">
               <el-icon><User /></el-icon>
               用户登录
             </el-button>
             <span style="margin: 0 10px">|</span>
-            <el-button type="success" link @click="goUserSite">
+            <el-button style="color: #906bff;" link @click="goUserSite">
               <el-icon><HomeFilled /></el-icon>
               返回首页
             </el-button>
@@ -118,7 +118,7 @@ const goUserSite = () => {
 <style scoped>
 .admin-login-page {
   min-height: 100vh;
-  background-image: url('/images/adminlogin.png');
+  background-image: url('/images/register_loginbg.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -141,6 +141,18 @@ const goUserSite = () => {
 
 .logo {
   margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.admin-logo {
+  height: 120px;
+  width: auto;
+  object-fit: contain;
+  background: white;
+  border-radius: 50%;
+  padding: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .login-header h2 {
@@ -149,7 +161,7 @@ const goUserSite = () => {
 }
 
 .title-green {
-  color: #67c23a !important;
+  color: #303133 !important;
   font-weight: bold;
 }
 
@@ -160,7 +172,7 @@ const goUserSite = () => {
 }
 
 .subtitle-green {
-  color: #85ce61 !important;
+  color: #303133 !important;
   font-weight: 500;
 }
 
@@ -171,6 +183,18 @@ const goUserSite = () => {
 .form-footer {
   text-align: center;
   margin-top: 10px;
+}
+
+.rainbow-btn {
+  background: linear-gradient(135deg, #ff0000, #ff7700, #ffdd00, #00cc00, #0099ff, #6633ff, #cc00ff) !important;
+  border: none !important;
+  color: white !important;
+  font-weight: 600;
+  transition: opacity 0.3s;
+}
+
+.rainbow-btn:hover {
+  opacity: 0.85;
 }
 </style>
 
