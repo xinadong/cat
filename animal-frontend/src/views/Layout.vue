@@ -10,8 +10,7 @@
     <header class="header">
       <div class="container">
         <div class="logo" @click="goHome">
-          <el-icon :size="32" color="#67c23a"><Pear /></el-icon>
-          <span>OurCAT</span>
+          <img src="/images/logo.png" alt="OurCAT" class="logo-img" />
         </div>
 
         <nav class="nav">
@@ -135,7 +134,7 @@ const bgMap = {
   '/animals': '/images/animalbg.png',
   '/articles': '/images/articlebg.png',
   '/questions': '/images/questionbg.png',
-  '/ai-assistant': '/images/aibg.png'
+  '/ai-assistant': '/images/aiassistantbg.png'
 }
 
 const mainBg = computed(() => {
@@ -363,19 +362,18 @@ onUnmounted(() => {
 }
 
 .logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
   cursor: pointer;
-  font-size: 24px;
-  font-weight: bold;
-  color: white;
   transition: transform 0.3s;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 .logo:hover {
   transform: scale(1.05);
+}
+
+.logo-img {
+  height: 100px;
+  width: auto;
+  object-fit: contain;
 }
 
 .nav {
