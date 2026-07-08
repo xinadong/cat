@@ -1,9 +1,16 @@
 <template>
   <div class="animal-list-page">
     <div class="container">
+      <div class="page-header">
+        <h1>
+          <el-icon><Grid /></el-icon>
+          猫咪档案库
+        </h1>
+        <p>你想了解的个咪信息都在这里</p>
+      </div>
+
       <!-- 搜索和筛选 -->
       <div class="search-section">
-        <el-card shadow="never">
           <div class="search-box">
             <el-input
               v-model="searchParams.keyword"
@@ -41,7 +48,6 @@
               />
             </el-select>
           </div>
-        </el-card>
       </div>
 
       <!-- 动物列表 -->
@@ -207,8 +213,30 @@ onMounted(() => {
   padding: 0 20px;
 }
 
+.page-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.page-header h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 32px;
+  margin-bottom: 10px;
+  color: #303133;
+}
+
+.page-header p {
+  font-size: 16px;
+  color: #909399;
+}
+
 .search-section {
   margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
 }
 
 .search-box {
@@ -216,6 +244,7 @@ onMounted(() => {
   align-items: center;
   gap: 15px;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .animal-list {
@@ -234,10 +263,45 @@ onMounted(() => {
 }
 
 .animal-card {
-  background: white;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 4px solid rgba(255, 255, 255, 0.5);
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.animal-card:nth-child(8n+1) {
+  border-color: rgba(254, 88, 175, 0.7);
+}
+
+.animal-card:nth-child(8n+2) {
+  border-color: rgba(95, 87, 255, 0.7);
+}
+
+.animal-card:nth-child(8n+3) {
+  border-color: rgba(45, 255, 65, 0.7);
+}
+
+.animal-card:nth-child(8n+4) {
+  border-color: rgba(255, 239, 87, 0.7);
+}
+
+.animal-card:nth-child(8n+5) {
+  border-color: rgba(0, 210, 255, 0.7);
+}
+
+.animal-card:nth-child(8n+6) {
+  border-color: rgba(255, 140, 0, 0.7);
+}
+
+.animal-card:nth-child(8n+7) {
+  border-color: rgba(255, 26, 217, 0.7);
+}
+
+.animal-card:nth-child(8n+8) {
+  border-color: rgba(23, 131, 255, 0.7);
 }
 
 .animal-image {
@@ -245,6 +309,17 @@ onMounted(() => {
   width: 100%;
   height: 200px;
   overflow: hidden;
+}
+
+.animal-image::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.6));
+  pointer-events: none;
 }
 
 .animal-image img {
@@ -256,24 +331,6 @@ onMounted(() => {
 
 .animal-card:hover .animal-image img {
   transform: scale(1.1);
-}
-
-.animal-mask {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.4);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-
-.animal-card:hover .animal-mask {
-  opacity: 1;
 }
 
 .animal-content {
