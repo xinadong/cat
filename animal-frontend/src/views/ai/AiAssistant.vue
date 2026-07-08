@@ -11,7 +11,7 @@
               <p>喵！今天想了解什么~</p>
             </div>
           </div>
-          <el-button 
+          <el-button
             v-if="messages.length > 0"
             type="danger"
             :icon="Delete"
@@ -34,7 +34,7 @@
             <p>关于校园毛孩子的一切，尽管来问我！比如：</p>
             <div class="example-questions">
               <div
-                v-for="example in exampleQuestions" 
+                v-for="example in exampleQuestions"
                 :key="example"
                 @click="askQuestion(example.text)"
                 class="example-card"
@@ -46,8 +46,8 @@
           </div>
 
           <!-- 消息列表 -->
-          <div 
-            v-for="(msg, index) in messages" 
+          <div
+            v-for="(msg, index) in messages"
             :key="index"
             :class="['message', msg.role]"
           >
@@ -82,8 +82,8 @@
             @keydown.enter.prevent="handleSend"
             :disabled="loading"
           />
-          <el-button 
-            type="primary" 
+          <el-button
+            type="primary"
             @click="handleSend"
             :loading="loading"
             :disabled="!inputMessage.trim()"
@@ -130,7 +130,7 @@ const aiConfig = ref({})
 const exampleQuestions = [
   { icon: '🍖', text: '流浪猫能吃什么？' },
   { icon: '🏥', text: '猫咪生病有哪些征兆？' },
-  { icon: '🐾', text: '校园里有哪些猫咪？' },
+  { icon: '🐾', text: '常见的流浪猫有哪些种类？' },
   { icon: '😺', text: '猫咪为什么咕噜咕噜？' }
 ]
 
@@ -395,7 +395,7 @@ onMounted(() => {
 .example-questions {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 8px;
+  gap: 16px;
   margin-top: 8px;
   max-width: 480px;
   margin-left: auto;
