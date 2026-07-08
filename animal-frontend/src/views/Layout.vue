@@ -134,7 +134,8 @@ const bgMap = {
   '/animals': '/images/animalbg.png',
   '/articles': '/images/articlebg.png',
   '/questions': '/images/questionbg.png',
-  '/ai-assistant': '/images/aiassistantbg.png'
+  '/ai-assistant': '/images/aiassistantbg.png',
+  '/personal': '/images/otherbg.png'
 }
 
 const mainBg = computed(() => {
