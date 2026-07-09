@@ -4,7 +4,7 @@
     <el-aside :width="isCollapse ? '64px' : '200px'" class="admin-aside">
       <!-- Logo区域 -->
       <div class="logo-container" :class="{ collapsed: isCollapse }">
-        <el-icon :size="28" color="#67c23a">
+        <el-icon :size="28" color="#906bff">
           <component :is="Management" />
         </el-icon>
         <transition name="fade">
@@ -422,7 +422,7 @@ const handleProfileSubmit = async () => {
 .logo-text {
   font-size: 18px;
   font-weight: bold;
-  color: #67c23a;
+  color: #906bff;
   white-space: nowrap;
 }
 
@@ -469,23 +469,23 @@ const handleProfileSubmit = async () => {
 }
 
 .admin-menu .el-menu-item:hover {
-  background-color: #f0f9ff;
-  color: #67c23a;
+  background-color: #f5f0ff;
+  color: #906bff;
 }
 
 .admin-menu .el-menu-item:hover .el-icon {
-  color: #67c23a;
+  color: #906bff;
 }
 
 .admin-menu .el-menu-item.is-active {
-  background: linear-gradient(90deg, rgba(103, 194, 58, 0.1), transparent);
-  color: #67c23a;
-  border-right: 3px solid #67c23a;
+  background: linear-gradient(90deg, rgba(144, 107, 255, 0.1), transparent);
+  color: #906bff;
+  border-right: 3px solid #906bff;
   font-weight: 600;
 }
 
 .admin-menu .el-menu-item.is-active .el-icon {
-  color: #67c23a;
+  color: #906bff;
 }
 
 /* ============ 主容器样式 ============ */
@@ -527,7 +527,7 @@ const handleProfileSubmit = async () => {
 }
 
 .collapse-btn:hover {
-  color: #67c23a;
+  color: #906bff;
   transform: scale(1.1);
 }
 
