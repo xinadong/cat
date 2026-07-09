@@ -576,8 +576,11 @@ onMounted(() => {
 
 .comment-item {
   padding: 16px;
-  background: #f9fafb;
-  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
 }
 
 .comment-animal {
@@ -621,14 +624,17 @@ onMounted(() => {
 
 .question-item {
   padding: 16px;
-  background: #f9fafb;
-  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
   cursor: pointer;
   transition: all 0.3s;
 }
 
 .question-item:hover {
-  background: #f0f2f5;
+  background: rgba(255, 255, 255, 0.95);
 }
 
 .question-item h3 {
@@ -658,14 +664,17 @@ onMounted(() => {
   display: flex;
   gap: 12px;
   padding: 12px;
-  background: #f9fafb;
-  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
   cursor: pointer;
   transition: all 0.3s;
 }
 
 .history-item:hover {
-  background: #f0f2f5;
+  background: rgba(255, 255, 255, 0.95);
 }
 
 .history-item img {
@@ -698,4 +707,3 @@ onMounted(() => {
   color: #909399;
 }
 </style>
-
