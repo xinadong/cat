@@ -21,9 +21,9 @@
 
           <!-- 图片轮播展示 -->
           <div class="animal-images-carousel">
-            <el-carousel 
-              :interval="4000" 
-              arrow="always" 
+            <el-carousel
+              :interval="4000"
+              arrow="always"
               height="500px"
               indicator-position="outside"
             >
@@ -213,9 +213,9 @@ import { getAnimalDetail, getRecommendAnimals } from '@/api/animal'
 import { checkCollect, addCollect, deleteCollect } from '@/api/collect'
 import { getCommentList, addComment, likeComment, deleteComment } from '@/api/comment'
 import { ElMessage } from 'element-plus'
-import { 
-  Star, StarFilled, View, Picture, Sunny, Location, 
-  Grid 
+import {
+  Star, StarFilled, View, Picture, Sunny, Location,
+  Grid
 } from '@element-plus/icons-vue'
 
 const route = useRoute()
@@ -376,20 +376,20 @@ const formatTime = (time) => {
 
 // 监听路由参数变化
 watch(
-  () => route.params.id,
-  (newId) => {
-    if (newId) {
-      // 重置数据
-      animal.value = {}
-      comments.value = []
-      recommendList.value = []
-      commentContent.value = ''
-      // 滚动到顶部
-      window.scrollTo(0, 0)
-      // 重新获取数据
-      fetchAnimalDetail()
+    () => route.params.id,
+    (newId) => {
+      if (newId) {
+        // 重置数据
+        animal.value = {}
+        comments.value = []
+        recommendList.value = []
+        commentContent.value = ''
+        // 滚动到顶部
+        window.scrollTo(0, 0)
+        // 重新获取数据
+        fetchAnimalDetail()
+      }
     }
-  }
 )
 
 onMounted(() => {
@@ -432,8 +432,8 @@ onMounted(() => {
   width: 100%;
 }
 
-.main-card, 
-.comment-card, 
+.main-card,
+.comment-card,
 .recommend-card {
   margin-bottom: 20px;
   background: rgba(255, 255, 255, 0.8);
@@ -517,6 +517,26 @@ onMounted(() => {
   margin-left: auto;
 }
 
+.meta-actions :deep(.el-button--primary) {
+  background: #f07090;
+  border-color: #f07090;
+}
+
+.meta-actions :deep(.el-button--primary:hover) {
+  background: #f7a5b8;
+  border-color: #f7a5b8;
+}
+
+.meta-actions :deep(.el-button--warning) {
+  background: #f07090;
+  border-color: #f07090;
+}
+
+.meta-actions :deep(.el-button--warning:hover) {
+  background: #f7a5b8;
+  border-color: #f7a5b8;
+}
+
 .animal-details {
   margin-top: 24px;
 }
@@ -570,6 +590,27 @@ onMounted(() => {
 
 .comment-input {
   margin-bottom: 24px;
+}
+
+.comment-input :deep(.el-button--primary) {
+  background: #f07090;
+  border-color: #f07090;
+}
+
+.comment-input :deep(.el-button--primary:hover) {
+  background: #f7a5b8;
+  border-color: #f7a5b8;
+}
+
+.comment-input :deep(.el-button--primary.is-disabled) {
+  background: #c0c4cc;
+  border-color: #c0c4cc;
+  color: #fff;
+}
+
+.comment-input :deep(.el-button--primary.is-disabled:hover) {
+  background: #c0c4cc;
+  border-color: #c0c4cc;
 }
 
 .login-tip {
@@ -783,24 +824,24 @@ onMounted(() => {
   .animal-header h1 {
     font-size: 28px;
   }
-  
+
   .animal-images-carousel {
     height: 300px;
   }
-  
+
   .detail-section h3 {
     font-size: 18px;
   }
-  
+
   .detail-section p {
     font-size: 14px;
   }
-  
+
   .recommend-grid {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 15px;
   }
-  
+
   .recommend-image {
     height: 150px;
   }
