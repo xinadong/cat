@@ -15,29 +15,24 @@
             <el-input
               v-model="searchParams.keyword"
               placeholder="搜索动物名称或学名..."
-              size="large"
               clearable
               @keyup.enter="handleSearch"
-              style="flex: 1; max-width: 600px;"
+              class="search-input"
             >
               <template #prefix>
                 <el-icon><Search /></el-icon>
               </template>
-              <template #append>
-                <el-button type="primary" @click="handleSearch">
-                  <el-icon><Search /></el-icon>
-                  搜索
-                </el-button>
-              </template>
             </el-input>
-            
+            <el-button class="rainbow-search-btn" @click="handleSearch">
+              <el-icon><Search /></el-icon>
+              搜索
+            </el-button>
             <el-select
               v-model="searchParams.categoryId"
               placeholder="分类筛选"
-              size="large"
               clearable
               @change="handleSearch"
-              style="width: 200px;"
+              class="filter-select"
             >
               <el-option label="全部分类" :value="null" />
               <el-option
@@ -242,9 +237,80 @@ onMounted(() => {
 .search-box {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 50px;
+  padding: 10px 14px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.search-input {
+  flex: 1;
+  min-width: 260px;
+  max-width: 500px;
+}
+
+.search-input :deep(.el-input__wrapper) {
+  background: transparent;
+  box-shadow: none !important;
+  border: none;
+  border-radius: 25px;
+  padding: 8px 12px;
+  font-size: 16px;
+}
+
+.search-input :deep(.el-input__inner) {
+  font-size: 16px;
+}
+
+.rainbow-search-btn {
+  background: #fb9fac !important;
+  border: none !important;
+  color: white !important;
+  font-weight: 600;
+  border-radius: 25px !important;
+  padding: 12px 28px !important;
+  height: auto !important;
+  font-size: 16px;
+  transition: opacity 0.3s;
+  white-space: nowrap;
+  margin-left: -6px;
+}
+
+.rainbow-search-btn:hover {
+  opacity: 0.85;
+}
+
+.filter-select {
+  width: 180px;
+}
+
+.filter-select :deep(.el-select__wrapper) {
+  background: #fce4ec !important;
+  box-shadow: none !important;
+  border: none !important;
+  border-radius: 25px;
+  padding: 12px 16px;
+}
+
+.filter-select :deep(.el-input__wrapper) {
+  background: #fce4ec !important;
+  box-shadow: none !important;
+  border: none;
+  border-radius: 25px;
+  padding: 12px 16px;
+  font-size: 16px;
+}
+
+.filter-select :deep(.el-input__inner) {
+  font-size: 16px;
+  color: #303133;
+}
+
+.filter-select :deep(.el-select__placeholder) {
+  color: #606266;
 }
 
 .animal-list {
