@@ -523,13 +523,16 @@ onUnmounted(() => {
   gap: 12px;
   padding: 30px 20px;
   border-radius: 12px;
-  background: #f9fafb;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   cursor: pointer;
   transition: all 0.3s;
 }
 
 .action-item:hover {
-  background: #fff;
+  background: rgba(255, 255, 255, 0.9);
   transform: translateY(-5px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
