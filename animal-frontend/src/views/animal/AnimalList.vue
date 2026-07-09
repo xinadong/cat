@@ -183,7 +183,7 @@ watch(
 
 onMounted(() => {
   fetchCategories()
-  
+
   // 初始化路由参数
   if (route.query.categoryId) {
     searchParams.categoryId = Number(route.query.categoryId)
@@ -191,7 +191,7 @@ onMounted(() => {
   if (route.query.keyword) {
     searchParams.keyword = route.query.keyword
   }
-  
+
   fetchAnimalList()
 })
 </script>
@@ -449,7 +449,7 @@ onMounted(() => {
     flex-direction: column;
     align-items: stretch;
   }
-  
+
   .search-box .el-select {
     width: 100% !important;
   }
@@ -459,4 +459,3 @@ onMounted(() => {
   }
 }
 </style>
-
