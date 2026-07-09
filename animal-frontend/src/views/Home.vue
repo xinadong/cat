@@ -3,7 +3,7 @@
     <!-- 轮播图 -->
     <div class="banner-section">
       <div class="banner-wrapper">
-        <el-carousel height="560px" :interval="4000" arrow="always">
+        <el-carousel height="675px" :interval="4000" arrow="always">
           <el-carousel-item v-for="banner in banners" :key="banner.id">
             <div class="banner-item" @click="handleBannerClick(banner)">
               <img :src="banner.imageUrl" :alt="banner.title" />
@@ -189,7 +189,7 @@ home {
 }
 
 .banner-wrapper {
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 0 auto;
   border-radius: 20px;
   overflow: hidden;
