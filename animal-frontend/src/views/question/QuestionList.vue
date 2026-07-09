@@ -4,9 +4,9 @@
       <div class="page-header">
         <h1>
           <el-icon><ChatDotRound /></el-icon>
-          问答社区
+          互动社区
         </h1>
-        <p>分享你的疑问，探讨动物知识</p>
+        <p>Q：喵喵喵？A：喵喵喵喵～</p>
         <el-button
           v-if="userStore.isLogin"
           type="primary"
@@ -252,7 +252,10 @@ onMounted(() => {
 }
 
 .question-item {
-  background: white;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   padding: 24px;
   border-radius: 12px;
   margin-bottom: 16px;
