@@ -68,12 +68,12 @@
           <!-- 详细信息 -->
           <el-divider />
           <div class="animal-details">
-            <div class="detail-section" v-if="animal.appearance">
+            <div class="detail-section" v-if="animal.selfintro">
               <h3>
                 <el-icon><Picture /></el-icon>
-                外形特征
+                自我介绍
               </h3>
-              <p>{{ animal.appearance }}</p>
+              <p>{{ animal.selfintro }}</p>
             </div>
 
             <div class="detail-section" v-if="animal.habit">
@@ -84,12 +84,12 @@
               <p>{{ animal.habit }}</p>
             </div>
 
-            <div class="detail-section" v-if="animal.distribution">
+            <div class="detail-section" v-if="animal.over">
               <h3>
                 <el-icon><Location /></el-icon>
-                分布地区
+                毕业情况
               </h3>
-              <p>{{ animal.distribution }}</p>
+              <p>{{ animal.over }}</p>
             </div>
           </div>
         </el-card>
@@ -231,12 +231,12 @@ const recommendList = ref([])
 
 const imageList = computed(() => {
   const images = []
-  
+
   // 首先添加封面图
   if (animal.value.coverImage) {
     images.push(animal.value.coverImage)
   }
-  
+
   // 然后添加子图片
   if (animal.value.images) {
     try {
@@ -248,7 +248,7 @@ const imageList = computed(() => {
       console.error('解析图片列表失败', e)
     }
   }
-  
+
   // 如果没有任何图片，返回封面图
   return images.length > 0 ? images : [animal.value.coverImage]
 })
