@@ -499,14 +499,19 @@ const handleProfileSubmit = async () => {
 
 /* ============ 顶部导航样式 ============ */
 .admin-header {
-  background: transparent;
-  box-shadow: none;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 24px;
   height: 60px;
   z-index: 10;
+  margin: 10px 10px 0 0;
 }
 
 .header-left {
@@ -616,5 +621,17 @@ const handleProfileSubmit = async () => {
   .admin-main {
     padding: 12px;
   }
+}
+</style>
+
+<style>
+/* 管理后台全局 el-card 样式覆盖 */
+.admin-layout .el-card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
 }
 </style>
