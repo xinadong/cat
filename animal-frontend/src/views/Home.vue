@@ -3,7 +3,7 @@
     <!-- 轮播图 -->
     <div class="banner-section">
       <div class="banner-wrapper">
-        <el-carousel height="500px" :interval="4000" arrow="always">
+        <el-carousel height="675px" :interval="4000" arrow="always">
           <el-carousel-item v-for="banner in banners" :key="banner.id">
             <div class="banner-item" @click="handleBannerClick(banner)">
               <img :src="banner.imageUrl" :alt="banner.title" />
@@ -178,7 +178,8 @@ onMounted(() => {
 })
 </script>
 
-<style scoped>.home {
+<style scoped>
+home {
   padding-bottom: 40px;
 }
 
