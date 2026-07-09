@@ -139,6 +139,9 @@ const bgMap = {
 }
 
 const mainBg = computed(() => {
+  if (route.path.startsWith('/animal/')) {
+    return '/images/animalbg.png'
+  }
   return bgMap[route.path] || ''
 })
 
@@ -635,4 +638,3 @@ onUnmounted(() => {
   }
 }
 </style>
-
