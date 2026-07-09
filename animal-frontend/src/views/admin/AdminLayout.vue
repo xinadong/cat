@@ -390,7 +390,7 @@ const handleProfileSubmit = async () => {
 .admin-layout {
   height: 100vh;
   width: 100%;
-  background: #f0f2f5;
+  background: url('/images/adminbg.png') center/cover no-repeat fixed;
 }
 
 /* ============ 侧边栏样式 ============ */
@@ -410,8 +410,8 @@ const handleProfileSubmit = async () => {
   justify-content: flex-start;
   padding: 0 20px;
   gap: 12px;
-  border-bottom: 1px solid #e8e8e8;
-  background: #fff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  background: transparent;
 }
 
 .logo-container.collapsed {
@@ -448,7 +448,7 @@ const handleProfileSubmit = async () => {
 /* 菜单样式 */
 .admin-menu {
   border: none;
-  background: #fff;
+  background: transparent;
 }
 
 .admin-menu:not(.el-menu--collapse) {
@@ -494,12 +494,13 @@ const handleProfileSubmit = async () => {
   flex-direction: column;
   height: 100vh;
   overflow: hidden;
+  background: transparent;
 }
 
 /* ============ 顶部导航样式 ============ */
 .admin-header {
-  background: #fff;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  background: transparent;
+  box-shadow: none;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -561,7 +562,7 @@ const handleProfileSubmit = async () => {
 
 /* ============ 内容区样式 ============ */
 .admin-main {
-  background: #f0f2f5;
+  background: transparent;
   padding: 20px;
   overflow-y: auto;
   flex: 1;
