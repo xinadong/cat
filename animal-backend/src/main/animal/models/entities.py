@@ -35,9 +35,9 @@ class Animal(BaseEntity, table=True):
     cover_image: Optional[str] = None
     images: Optional[str] = None
     scientific_name: Optional[str] = None
-    appearance: Optional[str] = None
+    selfintro: Optional[str] = Field(default=None)
     habit: Optional[str] = None
-    distribution: Optional[str] = None
+    over: Optional[str] = Field(default=None)
     protection_level: Optional[str] = None
     view_count: Optional[int] = Field(default=0)
     collect_count: Optional[int] = Field(default=0)
