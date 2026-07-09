@@ -7,7 +7,7 @@
           <el-icon><HomeFilled /></el-icon>
           首页
         </el-breadcrumb-item>
-        <el-breadcrumb-item :to="{ path: '/questions' }">问答社区</el-breadcrumb-item>
+        <el-breadcrumb-item :to="{ path: '/questions' }">互动社区</el-breadcrumb-item>
         <el-breadcrumb-item>{{ questionData.question?.title || '问题详情' }}</el-breadcrumb-item>
       </el-breadcrumb>
 
