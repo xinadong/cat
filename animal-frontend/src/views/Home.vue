@@ -34,7 +34,7 @@
           >
             <div class="category-icon">
               <img v-if="category.icon" :src="category.icon" :alt="category.name" />
-              <el-icon v-else :size="40"><Pear /></el-icon>
+              <el-icon v-else :size="36"><Pear /></el-icon>
             </div>
             <h3>{{ category.name }}</h3>
             <p>{{ category.description }}</p>
@@ -277,20 +277,20 @@ onMounted(() => {
   width: 80px;
   height: 80px;
   margin: 0 auto 15px;
-  background: linear-gradient(135deg, #67c23a, #85ce61);
+  background: #f5f7fa;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: #906bff;
   overflow: hidden;
-  padding: 12px;
+  padding: 0;
 }
 
 .category-icon img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
 }
 
 .category-card h3 {
@@ -325,22 +325,37 @@ onMounted(() => {
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
 }
 
-.animal-card:nth-child(4n+1) {
-  border-color: rgba(254, 88, 175, 0.5);
+.animal-card:nth-child(8n+1) {
+  border-color: rgba(254, 88, 175, 0.7);
 }
 
-.animal-card:nth-child(4n+2) {
-  border-color: rgba(95, 87, 255, 0.5);
+.animal-card:nth-child(8n+2) {
+  border-color: rgba(95, 87, 255, 0.7);
 }
 
-.animal-card:nth-child(4n+3) {
-  border-color: rgba(45, 255, 65, 0.5);
+.animal-card:nth-child(8n+3) {
+  border-color: rgba(45, 255, 65, 0.7);
 }
 
-.animal-card:nth-child(4n+4) {
-  border-color: rgba(255, 239, 87, 0.5);
+.animal-card:nth-child(8n+4) {
+  border-color: rgba(255, 239, 87, 0.7);
 }
 
+.animal-card:nth-child(8n+5) {
+  border-color: rgba(0, 210, 255, 0.7);
+}
+
+.animal-card:nth-child(8n+6) {
+  border-color: rgba(255, 140, 0, 0.7);
+}
+
+.animal-card:nth-child(8n+7) {
+  border-color: rgba(255, 26, 217, 0.7);
+}
+
+.animal-card:nth-child(8n+8) {
+  border-color: rgba(23, 131, 255, 0.7);
+}
 
 .animal-image {
   position: relative;
