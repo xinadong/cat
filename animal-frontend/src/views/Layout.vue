@@ -142,6 +142,12 @@ const mainBg = computed(() => {
   if (route.path.startsWith('/animal/')) {
     return '/images/animalbg.png'
   }
+  if (route.path.startsWith('/question/')) {
+    return '/images/interactbg.png'
+  }
+  if (route.path.startsWith('/article/')) {
+    return '/images/votebg.png'
+  }
   return bgMap[route.path] || ''
 })
 
