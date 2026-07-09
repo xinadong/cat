@@ -5,7 +5,7 @@
       <div class="breadcrumb-wrapper">
         <el-breadcrumb separator="/">
           <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-          <el-breadcrumb-item :to="{ path: '/animals' }">猫咪档案库</el-breadcrumb-item>
+          <el-breadcrumb-item :to="{ path: '/animals' }">个咪档案</el-breadcrumb-item>
           <el-breadcrumb-item>{{ animal.name }}</el-breadcrumb-item>
         </el-breadcrumb>
       </div>
@@ -400,7 +400,7 @@ onMounted(() => {
 <style scoped>
 .animal-detail-page {
   padding: 20px 0 40px;
-  background: #f5f7fa;
+  background: transparent;
   min-height: calc(100vh - 350px);
 }
 
