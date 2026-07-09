@@ -630,8 +630,16 @@ onMounted(() => {
   border-color: #c0c4cc;
   color: white;
 }
-.api-key-warning {
-  padding: 0 30px 20px;
+
+.cat-paw-button:not(.is-disabled) {
+  background: #67c23a !important;
+  border-color: #67c23a !important;
+  color: white !important;
+}
+
+.cat-paw-button:not(.is-disabled):hover {
+  background: #85ce61 !important;
+  border-color: #85ce61 !important;
 }
 
 @media (max-width: 768px) {
@@ -661,3 +669,4 @@ onMounted(() => {
   }
 }
 </style>
+
