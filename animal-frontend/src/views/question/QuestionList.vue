@@ -213,7 +213,6 @@ onMounted(() => {
 <style scoped>
 .question-list-page {
   padding: 30px 0;
-  background: #f5f7fa;
   min-height: calc(100vh - 350px);
 }
 
