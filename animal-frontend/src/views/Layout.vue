@@ -132,8 +132,8 @@ const userStore = useUserStore()
 const bgMap = {
   '/': '/images/homebg.png',
   '/animals': '/images/animalbg.png',
-  '/articles': '/images/articlebg.png',
-  '/questions': '/images/questionbg.png',
+  '/articles': '/images/votebg.png',
+  '/questions': '/images/interactbg.png',
   '/ai-assistant': '/images/aiassistantbg.png',
   '/personal': '/images/otherbg.png'
 }
@@ -141,6 +141,12 @@ const bgMap = {
 const mainBg = computed(() => {
   if (route.path.startsWith('/animal/')) {
     return '/images/animalbg.png'
+  }
+  if (route.path.startsWith('/question/')) {
+    return '/images/interactbg.png'
+  }
+  if (route.path.startsWith('/article/')) {
+    return '/images/votebg.png'
   }
   return bgMap[route.path] || ''
 })

@@ -4,7 +4,7 @@
     <el-aside :width="isCollapse ? '64px' : '200px'" class="admin-aside">
       <!-- Logo区域 -->
       <div class="logo-container" :class="{ collapsed: isCollapse }">
-        <el-icon :size="28" color="#67c23a">
+        <el-icon :size="28" color="#906bff">
           <component :is="Management" />
         </el-icon>
         <transition name="fade">
@@ -390,7 +390,7 @@ const handleProfileSubmit = async () => {
 .admin-layout {
   height: 100vh;
   width: 100%;
-  background: #f0f2f5;
+  background: url('/images/adminbg.png') center/cover no-repeat fixed;
 }
 
 /* ============ 侧边栏样式 ============ */
@@ -410,8 +410,8 @@ const handleProfileSubmit = async () => {
   justify-content: flex-start;
   padding: 0 20px;
   gap: 12px;
-  border-bottom: 1px solid #e8e8e8;
-  background: #fff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  background: transparent;
 }
 
 .logo-container.collapsed {
@@ -422,7 +422,7 @@ const handleProfileSubmit = async () => {
 .logo-text {
   font-size: 18px;
   font-weight: bold;
-  color: #67c23a;
+  color: #906bff;
   white-space: nowrap;
 }
 
@@ -448,7 +448,7 @@ const handleProfileSubmit = async () => {
 /* 菜单样式 */
 .admin-menu {
   border: none;
-  background: #fff;
+  background: transparent;
 }
 
 .admin-menu:not(.el-menu--collapse) {
@@ -469,23 +469,23 @@ const handleProfileSubmit = async () => {
 }
 
 .admin-menu .el-menu-item:hover {
-  background-color: #f0f9ff;
-  color: #67c23a;
+  background-color: #f5f0ff;
+  color: #906bff;
 }
 
 .admin-menu .el-menu-item:hover .el-icon {
-  color: #67c23a;
+  color: #906bff;
 }
 
 .admin-menu .el-menu-item.is-active {
-  background: linear-gradient(90deg, rgba(103, 194, 58, 0.1), transparent);
-  color: #67c23a;
-  border-right: 3px solid #67c23a;
+  background: linear-gradient(90deg, rgba(144, 107, 255, 0.1), transparent);
+  color: #906bff;
+  border-right: 3px solid #906bff;
   font-weight: 600;
 }
 
 .admin-menu .el-menu-item.is-active .el-icon {
-  color: #67c23a;
+  color: #906bff;
 }
 
 /* ============ 主容器样式 ============ */
@@ -494,18 +494,24 @@ const handleProfileSubmit = async () => {
   flex-direction: column;
   height: 100vh;
   overflow: hidden;
+  background: transparent;
 }
 
 /* ============ 顶部导航样式 ============ */
 .admin-header {
-  background: #fff;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 24px;
   height: 60px;
   z-index: 10;
+  margin: 10px 10px 0 0;
 }
 
 .header-left {
@@ -521,7 +527,7 @@ const handleProfileSubmit = async () => {
 }
 
 .collapse-btn:hover {
-  color: #67c23a;
+  color: #906bff;
   transform: scale(1.1);
 }
 
@@ -561,7 +567,7 @@ const handleProfileSubmit = async () => {
 
 /* ============ 内容区样式 ============ */
 .admin-main {
-  background: #f0f2f5;
+  background: transparent;
   padding: 20px;
   overflow-y: auto;
   flex: 1;
@@ -615,5 +621,17 @@ const handleProfileSubmit = async () => {
   .admin-main {
     padding: 12px;
   }
+}
+</style>
+
+<style>
+/* 管理后台全局 el-card 样式覆盖 */
+.admin-layout .el-card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
 }
 </style>

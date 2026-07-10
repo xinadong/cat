@@ -7,7 +7,7 @@
           <el-icon><HomeFilled /></el-icon>
           首页
         </el-breadcrumb-item>
-        <el-breadcrumb-item :to="{ path: '/questions' }">问答社区</el-breadcrumb-item>
+        <el-breadcrumb-item :to="{ path: '/questions' }">互动社区</el-breadcrumb-item>
         <el-breadcrumb-item>{{ questionData.question?.title || '问题详情' }}</el-breadcrumb-item>
       </el-breadcrumb>
 
@@ -73,7 +73,7 @@
             v-for="item in questionData.answers"
             :key="item.answer.id"
             class="answer-item"
-            :class="{ accepted: item.answer.isAccepted }"
+            :class="{ accepted: item.answer.isAccepted, 'my-answer': userStore.userId === item.answer.userId }"
           >
             <div class="answer-header">
               <div class="user-info">
@@ -176,7 +176,7 @@ onMounted(() => {
 <style scoped>
 .question-detail-page {
   padding: 30px 0;
-  background: #f5f7fa;
+  background: transparent;
   min-height: calc(100vh - 350px);
 }
 
@@ -189,8 +189,12 @@ onMounted(() => {
 .breadcrumb {
   margin-bottom: 20px;
   padding: 15px 20px;
-  background: white;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
 }
 
 .breadcrumb :deep(.el-breadcrumb__item:last-child .el-breadcrumb__inner) {
@@ -206,6 +210,12 @@ onMounted(() => {
 
 .question-card, .answer-card {
   margin-bottom: 20px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
 }
 
 .question-header {
@@ -287,13 +297,16 @@ onMounted(() => {
   padding: 20px;
   border-radius: 8px;
   margin-bottom: 16px;
-  background: #f9fafb;
+  background: rgba(249, 250, 251, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border: 2px solid transparent;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
   transition: all 0.3s;
 }
 
 .answer-item.accepted {
-  background: #f0f9ff;
+  background: rgba(240, 249, 255, 0.8);
   border-color: #67c23a;
 }
 
@@ -314,5 +327,11 @@ onMounted(() => {
   line-height: 1.8;
   color: #606266;
 }
-</style>
 
+.answer-input :deep(.el-button--primary.is-disabled),
+.answer-input :deep(.el-button--primary.is-disabled:hover) {
+  background: #c0c4cc;
+  border-color: #c0c4cc;
+  color: white;
+}
+</style>
