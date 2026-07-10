@@ -81,6 +81,7 @@ CREATE TABLE `animal` (
   `protection_level` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '保护等级',
   `view_count` int DEFAULT '0' COMMENT '浏览量',
   `collect_count` int DEFAULT '0' COMMENT '收藏量',
+  `vote_count` int DEFAULT '0' COMMENT '投票数',
   `status` tinyint DEFAULT '1' COMMENT '状态(0下架1上架)',
   `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
@@ -98,19 +99,19 @@ CREATE TABLE `animal` (
 
 LOCK TABLES `animal` WRITE;
 /*!40000 ALTER TABLE `animal` DISABLE KEYS */;
-INSERT INTO `animal` VALUES (1, '麻糍/糖球', 1, '/uploads/maci1.jpg', '[\"/uploads/maci2.jpg\"]', 'tangqiu', '我的命里有贵人，从小到大都有好心的姨姨帮我。请姨姨们放心，我接下来的猫生会像糖球一样甜！', '生活在食堂门口', '已毕业', '校园一级保护动物', 1283, 89, 1, '2025-11-22 00:08:16', '2026-07-08 16:55:26');
-INSERT INTO `animal` VALUES (2, '小猪', 1, '/uploads/xiaozhu1.jpg', '[\"/uploads/xiaozhu2.jpg\",\"/uploads/xiaozhu3.jpg\",\"/uploads/xiaozhu4.jpg\"]', 'xiaozhu', '我最喜欢待在路边等待姐姐们下课啦，姐姐们对我可好啦，经常给我带好吃的，但是下次不准说我胖啦', 'm，喜欢被拍屁股较为傲娇，有时喜欢贴贴，有时表现得淡淡的，经常流连于下天桥至大超路上', '未毕业', '校园一级保护动物', 988, 65, 1, '2025-06-22 00:08:16', '2026-07-08 16:24:21');
-INSERT INTO `animal` VALUES (3, '小三花', 1, '/uploads/hua1.jpg', '[\"/uploads/hua2.jpg\",\"/uploads/hua3.jpg\",\"/uploads/hua4.jpg\",\"/uploads/hua5.jpg\"]', 'xiaosanhua', '我喜欢宿管阿姨', '常待在1舍楼下', '已毕业', '校园一级保护动物', 757, 42, 1, '2025-11-22 00:08:16', '2026-07-08 16:20:20');
-INSERT INTO `animal` VALUES (4, '麻团', 1, '/uploads/mt1.jpg', '[\"/uploads/mt2.jpg\",\"/uploads/mt3.jpg\"]', 'matuan', '我去年秋天我的六个孩子都被好心姨姨领养了，只有我在校园里流浪，我还可以有一个家吗？', '欢迎大家补充', '未毕业', '校园一级保护动物', 523, 31, 1, '2025-06-22 00:08:16', '2026-07-08 16:20:20');
-INSERT INTO `animal` VALUES (5, '奥利奥', 2, '/uploads/ala1.jpg', '[\"/uploads/ala2.jpg\",\"/uploads/ala3.jpg\",\"/uploads/ala4.jpg\",\"/uploads/ala5.jpg\",\"/uploads/ala7.jpg\"]', 'aoliao', '我奥利奥是绝世无双美男子,堪称奶牛猫中集美貌与猫德一体的模范猫猫。到底是谁谠我绝育后叫莉莉的，快停止这个危险的想法啊喂!', '被自个帅醒', '已毕业', '校园一级保护动物', 2052, 168, 1, '2025-11-22 00:08:16', '2026-07-08 16:20:20');
-INSERT INTO `animal` VALUES (6, '八嘎', 2, '/uploads/baga.jpg', NULL, 'baga', '我大八嘎前半生风光无限，渴饮饮水机，困睡大沙发,出行靠电梯,坐拥一整座图书馆!现在隐居两脚兽家,也是抢狗饭、手动开门、偷小鱼干!', '八嘎', '已毕业', '校园一级保护动物', 893, 56, 1, '2025-09-22 00:08:16', '2026-07-08 16:20:20');
-INSERT INTO `animal` VALUES (7, '大痣', 2, '/uploads/dz1.jpg', '[\"/uploads/dz2.jpg\",\"/uploads/dz3.jpg\",\"/uploads/dz4.jpg\"]', 'dazhi', '...', '十分怕人，但会朝着人叫，但不允许人类靠近，近期开始接受人类食物', '未毕业', '校园一级保护动物', 634, 39, 1, '2025-11-22 00:08:16', '2026-07-08 16:20:20');
-INSERT INTO `animal` VALUES (8, 'dsm', 2, '/uploads/dsm1.jpg', '[\"/uploads/dsm2.jpg\",\"/uploads/dsm3.jpg\",\"/uploads/dsm4.jpg\"]', 'dashamao', '欢迎大家补充~', 'z老师的白月光，实验室居民', '未毕业', '校园一级保护动物', 448, 27, 1, '2025-11-22 00:08:16', '2026-07-08 16:24:26');
-INSERT INTO `animal` VALUES (9, '窦娥/豆娥', 3, '/uploads/doue1.jpg', '[\"/uploads/doue2.jpg\",\"/uploads/doue3.jpg\",\"/uploads/doue4.jpg\"]', 'doue', '大家好,我叫豆娥,其实原名是窦娥，但是我真的是被冤枉的!那窝小猫不是我的崽啊QAQ', '喜欢躺在1舍门前休憩，小夹子，媚人欺负猫', '已毕业', '校园一级保护动物', 589, 68, 1, '2026-07-08 16:24:01', '2026-07-08 16:24:10');
-INSERT INTO `animal` VALUES (10, '张豆包', 3, '/uploads/zhangdoubao.jpg', NULL, 'doubao zhang', '我是个战五渣,被几只\"母老虎\"驱逐出了领地，跑到了湖边。但是因祸得福,我被更多两脚兽注意到，现在我有了家，再也不用打架啦', '欢迎大家补充~', '已毕业', '校园一级保护动物', 147, 15, 1, '2026-07-08 16:24:01', '2026-07-08 16:24:01');
-INSERT INTO `animal` VALUES (11, '少爷', 3, '/uploads/shaoye1.jpg', '[\"/uploads/shaoye2.jpg\",\"/uploads/shaoye3.jpg\",\"/uploads/shaoye4.jpg\",\"/uploads/shaoye5.jpg\"]', 'shaoye', '听得出来我很高贵不', '常出现于图书馆前，有时见人喜欢翻身亲昵，有时又很高冷，端坐于马路上', '未毕业', '校园一级保护动物', 666, 66, 1, '2026-07-08 17:51:20', '2026-07-08 17:51:20');
-INSERT INTO `animal` VALUES (12, '66', 4, '/uploads/661.jpg', '[\"/uploads/662.jpg\",\"/uploads/663.jpg\",\"/uploads/664.jpg\"]', 'six six', '我是一只银渐层~。从两个月大被猫妈妈抛弃到被两次退养，经历了无数坎坷的我终于有了家,感谢这一路上的好心哥哥姐姐们,我现在过得很开心哦', '数据组干peach呢', '已毕业', '校园一级保护动物', 568, 25, 1, '2026-07-08 17:51:20', '2026-07-08 17:51:20');
-INSERT INTO `animal` VALUES (13, '咖喱', 4, '/uploads/gl1.jpg', '[\"/uploads/gl2.jpg\",\"/uploads/gl3.jpg\",\"/uploads/gl4.jpg\",\"/uploads/gl5.jpg\"]', 'gali', '欢迎大家补充~', '被自己美到', '已毕业','校园一级保护动物', 520, 52, 1, '2026-07-08 17:51:20', '2026-07-08 17:51:20');
+INSERT INTO `animal` VALUES (1, '麻糍/糖球', 1, '/uploads/maci1.jpg', '["/uploads/maci2.jpg"]', 'tangqiu', '我的命里有贵人，从小到大都有好心的姨姨帮我。请姨姨们放心，我接下来的猫生会像糖球一样甜！', '生活在食堂门口', '已毕业', '校园一级保护动物', 1283, 89, 89, 1, '2025-11-22 00:08:16', '2026-07-08 16:55:26');
+INSERT INTO `animal` VALUES (2, '小猪', 1, '/uploads/xiaozhu1.jpg', '["/uploads/xiaozhu2.jpg","/uploads/xiaozhu3.jpg","/uploads/xiaozhu4.jpg"]', 'xiaozhu', '我最喜欢待在路边等待姐姐们下课啦，姐姐们对我可好啦，经常给我带好吃的，但是下次不准说我胖啦', 'm，喜欢被拍屁股较为傲娇，有时喜欢贴贴，有时表现得淡淡的，经常流连于下天桥至大超路上', '未毕业', '校园一级保护动物', 988, 65, 65, 1, '2025-06-22 00:08:16', '2026-07-08 16:24:21');
+INSERT INTO `animal` VALUES (3, '小三花', 1, '/uploads/hua1.jpg', '["/uploads/hua2.jpg","/uploads/hua3.jpg","/uploads/hua4.jpg","/uploads/hua5.jpg"]', 'xiaosanhua', '我喜欢宿管阿姨', '常待在1舍楼下', '已毕业', '校园一级保护动物', 757, 42, 42, 1, '2025-11-22 00:08:16', '2026-07-08 16:20:20');
+INSERT INTO `animal` VALUES (4, '麻团', 1, '/uploads/mt1.jpg', '["/uploads/mt2.jpg","/uploads/mt3.jpg"]', 'matuan', '我去年秋天我的六个孩子都被好心姨姨领养了，只有我在校园里流浪，我还可以有一个家吗？', '欢迎大家补充', '未毕业', '校园一级保护动物', 523, 31, 31, 1, '2025-06-22 00:08:16', '2026-07-08 16:20:20');
+INSERT INTO `animal` VALUES (5, '奥利奥', 2, '/uploads/ala1.jpg', '["/uploads/ala2.jpg","/uploads/ala3.jpg","/uploads/ala4.jpg","/uploads/ala5.jpg","/uploads/ala7.jpg"]', 'aoliao', '我奥利奥是绝世无双美男子,堪称奶牛猫中集美貌与猫德一体的模范猫猫。到底是谁谠我绝育后叫莉莉的，快停止这个危险的想法啊喂!', '被自个帅醒', '已毕业', '校园一级保护动物', 2052, 168, 168, 1, '2025-11-22 00:08:16', '2026-07-08 16:20:20');
+INSERT INTO `animal` VALUES (6, '八嘎', 2, '/uploads/baga.jpg', NULL, 'baga', '我大八嘎前半生风光无限，渴饮饮水机，困睡大沙发,出行靠电梯,坐拥一整座图书馆!现在隐居两脚兽家,也是抢狗饭、手动开门、偷小鱼干!', '八嘎', '已毕业', '校园一级保护动物', 893, 56, 56, 1, '2025-09-22 00:08:16', '2026-07-08 16:20:20');
+INSERT INTO `animal` VALUES (7, '大痣', 2, '/uploads/dz1.jpg', '["/uploads/dz2.jpg","/uploads/dz3.jpg","/uploads/dz4.jpg"]', 'dazhi', '...', '十分怕人，但会朝着人叫，但不允许人类靠近，近期开始接受人类食物', '未毕业', '校园一级保护动物', 634, 39, 39, 1, '2025-11-22 00:08:16', '2026-07-08 16:20:20');
+INSERT INTO `animal` VALUES (8, 'dsm', 2, '/uploads/dsm1.jpg', '["/uploads/dsm2.jpg","/uploads/dsm3.jpg","/uploads/dsm4.jpg"]', 'dashamao', '欢迎大家补充~', 'z老师的白月光，实验室居民', '未毕业', '校园一级保护动物', 448, 27, 27, 1, '2025-11-22 00:08:16', '2026-07-08 16:24:26');
+INSERT INTO `animal` VALUES (9, '窦娥/豆娥', 3, '/uploads/doue1.jpg', '["/uploads/doue2.jpg","/uploads/doue3.jpg","/uploads/doue4.jpg"]', 'doue', '大家好,我叫豆娥,其实原名是窦娥，但是我真的是被冤枉的!那窝小猫不是我的崽啊QAQ', '喜欢躺在1舍门前休憩，小夹子，媚人欺负猫', '已毕业', '校园一级保护动物', 589, 68, 68, 1, '2026-07-08 16:24:01', '2026-07-08 16:24:10');
+INSERT INTO `animal` VALUES (10, '张豆包', 3, '/uploads/zhangdoubao.jpg', NULL, 'doubao zhang', '我是个战五渣,被几只"母老虎"驱逐出了领地，跑到了湖边。但是因祸得福,我被更多两脚兽注意到，现在我有了家，再也不用打架啦', '欢迎大家补充~', '已毕业', '校园一级保护动物', 147, 15, 15, 1, '2026-07-08 16:24:01', '2026-07-08 16:24:01');
+INSERT INTO `animal` VALUES (11, '少爷', 3, '/uploads/shaoye1.jpg', '["/uploads/shaoye2.jpg","/uploads/shaoye3.jpg","/uploads/shaoye4.jpg","/uploads/shaoye5.jpg"]', 'shaoye', '听得出来我很高贵不', '常出现于图书馆前，有时见人喜欢翻身亲昵，有时又很高冷，端坐于马路上', '未毕业', '校园一级保护动物', 666, 66, 66, 1, '2026-07-08 17:51:20', '2026-07-08 17:51:20');
+INSERT INTO `animal` VALUES (12, '66', 4, '/uploads/661.jpg', '["/uploads/662.jpg","/uploads/663.jpg","/uploads/664.jpg"]', 'six six', '我是一只银渐层~。从两个月大被猫妈妈抛弃到被两次退养，经历了无数坎坷的我终于有了家,感谢这一路上的好心哥哥姐姐们,我现在过得很开心哦', '数据组干peach呢', '已毕业', '校园一级保护动物', 568, 25, 25, 1, '2026-07-08 17:51:20', '2026-07-08 17:51:20');
+INSERT INTO `animal` VALUES (13, '咖喱', 4, '/uploads/gl1.jpg', '["/uploads/gl2.jpg","/uploads/gl3.jpg","/uploads/gl4.jpg","/uploads/gl5.jpg"]', 'gali', '欢迎大家补充~', '被自己美到', '已毕业','校园一级保护动物', 520, 52, 52, 1, '2026-07-08 17:51:20', '2026-07-08 17:51:20');
 /*!40000 ALTER TABLE `animal` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -178,7 +179,7 @@ CREATE TABLE `article` (
 
 LOCK TABLES `article` WRITE;
 /*!40000 ALTER TABLE `article` DISABLE KEYS */;
-INSERT INTO `article` VALUES (1, '大熊猫的生活习性详解', '/uploads/b66a1fae0b9b432890c6854b95e738c7.png', '大熊猫（学名：Ailuropoda melanoleuca）是中国特有物种，被誉为\"活化石\"和\"中国国宝\"。大熊猫已在地球上生存了至少800万年...\n\n【饮食习惯】\n大熊猫虽属于食肉目，但食谱却非常特化，99%的食物都是竹子。一只成年大熊猫每天要吃掉12-38公斤的竹子。\n\n【生活习性】\n大熊猫喜欢独居，除了发情期和育幼期外，常年单独生活。它们的活动区域一般在3-7平方公里。\n\n【繁殖特点】\n大熊猫的繁殖能力很低，雌性每年只有一次发情期，且发情期仅2-3天。孕期为83-200天，通常每胎产1-2仔。', '哺乳动物', 357, 1, '2025-11-22 00:08:16', '2025-11-22 00:08:16');
+INSERT INTO `article` VALUES (1, '大熊猫的生活习性详解', '/uploads/b66a1fae0b9b432890c6854b95e738c7.png', '大熊猫（学名：Ailuropoda melanoleuca）是中国特有物种，被誉为"活化石"和"中国国宝"。大熊猫已在地球上生存了至少800万年...\n\n【饮食习惯】\n大熊猫虽属于食肉目，但食谱却非常特化，99%的食物都是竹子。一只成年大熊猫每天要吃掉12-38公斤的竹子。\n\n【生活习性】\n大熊猫喜欢独居，除了发情期和育幼期外，常年单独生活。它们的活动区域一般在3-7平方公里。\n\n【繁殖特点】\n大熊猫的繁殖能力很低，雌性每年只有一次发情期，且发情期仅2-3天。孕期为83-200天，通常每胎产1-2仔。', '哺乳动物', 357, 1, '2025-11-22 00:08:16', '2025-11-22 00:08:16');
 INSERT INTO `article` VALUES (2, '中国珍稀鸟类保护现状', '/uploads/b30ff277823f444c81b89f3a8398ed99.jpg', '中国是世界上鸟类资源最丰富的国家之一，拥有鸟类1400多种。其中许多是中国特有种，如朱鹮、丹顶鹤等...\n\n【朱鹮的复兴】\n朱鹮曾一度被认为野外灭绝，1981年在陕西洋县发现7只野生朱鹮后，经过40多年的保护，数量已恢复到5000多只。\n\n【丹顶鹤的保护】\n丹顶鹤是大型涉禽，主要栖息在沼泽和湿地。目前全球仅存2000-3000只，中国占据了重要的繁殖地和越冬地。', '鸟类', 245, 1, '2025-08-22 00:08:16', '2025-11-22 09:39:40');
 INSERT INTO `article` VALUES (3, '探秘两栖动物的奇妙世界', '/uploads/57fadb3181a244a89c750912a1924af6.jpg', '两栖动物是最早登上陆地的脊椎动物，它们在进化史上具有重要地位...\n\n【两栖动物的特点】\n幼体生活在水中，用鳃呼吸；成体既能生活在水中也能生活在陆地，用肺和皮肤呼吸。\n\n【中国的两栖动物】\n中国已知两栖动物约400种，其中特有种占60%以上，如大鲵（娃娃鱼）、虎纹蛙等。', '两栖动物', 191, 1, '2025-11-22 00:08:16', '2025-11-22 00:08:16');
 /*!40000 ALTER TABLE `article` ENABLE KEYS */;
@@ -466,5 +467,17 @@ UNLOCK TABLES;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+DROP TABLE IF EXISTS `cat_emoji`;
+CREATE TABLE `cat_emoji` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `title` varchar(100) DEFAULT NULL,
+  `image_url` varchar(255) NOT NULL,
+  `uploader_id` bigint DEFAULT NULL,
+  `animal_id` int DEFAULT NULL COMMENT '关联的猫咪ID',
+  `status` tinyint DEFAULT '1',
+  `create_time` datetime DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Dump completed on 2026-07-08 18:18:36
