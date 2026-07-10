@@ -75,3 +75,24 @@ def get_recommend_animals(
         .limit(4)
     ).all()
     return Result.success(data=animals)
+
+
+@router.post("/vote/{animal_id}")
+async def vote_animal(animal_id: int, session: Session = Depends(get_session)):
+    """专属投票接口：一票一票投出来"""
+    try:
+        # 1. 查出这只猫咪
+        animal = session.get(Animal, animal_id)
+        if not animal:
+            return {"code": 404, "message": "未找到该猫咪"}
+
+        # 2. 投票数 +1
+        animal.vote_count = (animal.vote_count or 0) + 1
+
+        # 3. 保存回数据库
+        session.add(animal)
+        session.commit()
+
+        return {"code": 200, "message": "投票成功", "data": animal.vote_count}
+    except Exception as e:
+        return {"code": 500, "message": f"投票失败: {str(e)}"}

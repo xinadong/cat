@@ -19,12 +19,11 @@ export default defineConfig({
     proxy: {
       '/api': {
         // 将 localhost 改为 127.0.0.1 强制使用 IPv4 解析
-        target: 'http://127.0.0.1:8080',
+        target: 'http://127.0.0.1:8088',
         changeOrigin: true
       },
       '/uploads': {
-        // 同样将上传目录的代理也修改为 127.0.0.1
-        target: 'http://127.0.0.1:8080',
+        target: 'http://127.0.0.1:8088',
         changeOrigin: true
 
       }

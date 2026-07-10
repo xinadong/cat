@@ -16,7 +16,7 @@ from routers.user.article_router import router as article_router
 from routers.user.interaction_router import router as interaction_router
 from routers.user.personal_router import router as personal_router
 from routers.user.ai_assistant_router import router as ai_assistant_router
-
+from routers.user.cat_emoji_router import router as cat_emoji_router
 # ==================== 导入后台路由 (Admin) ====================
 from routers.admin.admin_auth_router import router as admin_auth_router
 from routers.admin.admin_dashboard_router import router as admin_dashboard_router
@@ -59,6 +59,7 @@ app.include_router(article_router)
 app.include_router(interaction_router)
 app.include_router(personal_router)
 app.include_router(ai_assistant_router)
+app.include_router(cat_emoji_router)
 
 # ==================== 注册后台路由 ====================
 app.include_router(admin_auth_router)
@@ -70,4 +71,4 @@ app.include_router(admin_stats_router)
 if __name__ == "__main__":
     # 启动命令
     # reload=True 开启热更新，修改代码后自动重启
-    uvicorn.run("main:app", host="0.0.0.0", port=8080, reload=True)
+    uvicorn.run("main:app", host="0.0.0.0", port=8088, reload=True)

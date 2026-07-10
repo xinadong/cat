@@ -1,6 +1,7 @@
 from typing import Optional
 from datetime import datetime
 from sqlmodel import SQLModel, Field
+from typing import ClassVar
 
 # 驼峰命名转换器：确保 API JSON 字段与 Java 保持一致（如 create_time -> createTime）
 def to_camel(string: str) -> str:
@@ -44,6 +45,7 @@ class Animal(BaseEntity, table=True):
     status: Optional[int] = Field(default=1)
     create_time: Optional[datetime] = Field(default_factory=datetime.now)
     update_time: Optional[datetime] = Field(default_factory=datetime.now)
+    vote_count: Optional[int] = Field(default=0)
 
 # 3. 问答社区 - 回答模型
 class Answer(BaseEntity, table=True):
@@ -133,7 +135,7 @@ class SysAdmin(BaseEntity, table=True):
     __tablename__ = "sys_admin"
     id: Optional[int] = Field(default=None, primary_key=True)
     username: str
-    # exclude=True 对标 Java 中的 @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)，防止密码返回给前端
+    exclude: ClassVar[bool] = True
     password: str = Field(exclude=True)
     nickname: Optional[str] = None
     avatar: Optional[str] = None
@@ -156,3 +158,14 @@ class User(BaseEntity, table=True):
     status: Optional[int] = Field(default=1)
     create_time: Optional[datetime] = Field(default_factory=datetime.now)
     update_time: Optional[datetime] = Field(default_factory=datetime.now)
+
+# 13.猫猫表情包
+class CatEmoji(SQLModel, table=True):
+    __tablename__ = "cat_emoji"
+    id: Optional[int] = Field(default=None, primary_key=True)
+    title: Optional[str] = None
+    image_url: str
+    uploader_id: Optional[int] = None
+    animal_id: Optional[int] = Field(default=None)
+    status: int = Field(default=1)
+    create_time: datetime = Field(default_factory=datetime.now)
